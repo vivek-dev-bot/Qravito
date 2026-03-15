@@ -1,0 +1,117 @@
+.explore-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    padding: 20px 0;
+}
+
+.explore-menu h1{
+    color: #262626;
+    font-weight: 700;
+    font-size: clamp(26px,2.4vw,34px);
+}
+
+
+.explore-menu-text{
+    max-width: 60%;
+    color: #7a7a7a;
+    line-height: 1.6;
+    font-size: 15px;
+}
+
+.explore-menu-list{
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    text-align: center;
+    margin: 25px 0;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+
+.explore-menu-list::-webkit-scrollbar{
+    display: none;
+}
+
+.explore-menu-list-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+    transition: transform 0.25s ease;
+}
+
+.explore-menu-list-item img{
+    width: 7.5vw;
+    min-width: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+    box-sizing: border-box;
+}
+
+.explore-menu-list-item:hover img{
+    transform: scale(1.12);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+}
+
+
+.explore-menu-list-item p{
+    margin-top: 12px;
+    color: #747474;
+    font-size: clamp(14px,1.4vw,17px);
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.25s ease;
+}
+
+
+.explore-menu-list-item:hover p{
+    color: tomato;
+}
+
+
+.explore-menu-list-item img.active{
+    outline: 4px solid tomato;
+    outline-offset: 3px;
+    transform: scale(1.05);
+}
+
+
+.explore-menu hr{
+    margin: 25px 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+    border: none;
+}
+
+@media(max-width:1050px){
+    .explore-menu-text{
+        max-width: 100%;
+        font-size: 14px;
+    }
+    .explore-menu-list{
+        gap: 26px;
+    }
+}
+
+@media(max-width:768px){
+    .explore-menu-list{
+        gap: 22px;
+    }
+    .explore-menu-list-item img{
+        min-width: 70px;
+    }
+
+}
+
+@media(max-width:480px){
+    .explore-menu-list{
+        gap: 18px;
+    }
+    .explore-menu-list-item img{
+        min-width: 60px;
+    }
+}

@@ -1,0 +1,23 @@
+import React, { useState } from 'react'
+import './Home.css'
+import Header from '../../components/Header/Header'
+import ExpolerMenu from '../../components/ExpolerMenu/ExpolerMenu'
+import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
+import AppDownload from '../../components/AppDownload/AppDownload.JSX'
+
+const Home = () => {
+
+  const [category,setCategory] = useState('All');
+
+  return (
+    <div>
+      <Header/>
+      <ExpolerMenu category={category} setCategory={setCategory}/>
+      <FoodDisplay category={category}/>
+      <AppDownload/>
+
+    </div>
+  )
+}
+
+export default Home

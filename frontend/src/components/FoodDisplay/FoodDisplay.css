@@ -1,0 +1,87 @@
+.food-display{
+    margin-top: 40px;
+    padding: 0 20px;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+.food-display h2{
+    font-size: clamp(24px, 2.2vw, 32px);
+    font-weight: 700;
+    color: #2c2c2c;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+
+.food-display h2::after{
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: tomato;
+    display: block;
+    margin-top: 6px;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.food-display h2:hover::after{
+    width: 90px;
+}
+
+.food-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+    margin-top: 35px;
+    gap: 28px;
+    row-gap: 45px;
+    align-items: stretch;
+}
+
+
+.food-display-list > *{
+    animation: cardFade 0.6s ease forwards;
+}
+
+@keyframes cardFade{
+    from{
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Responsive*/
+@media (max-width: 1024px){
+    .food-display{
+        margin-top: 35px;
+    }
+    .food-display-list{
+        gap: 25px;
+        row-gap: 40px;
+    }
+}
+
+@media (max-width: 768px){
+    .food-display{
+        padding: 0 15px;
+    }
+    .food-display-list{
+        grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+        gap: 22px;
+    }
+}
+
+@media (max-width: 480px){
+    .food-display{
+        padding: 0 10px;
+    }
+    .food-display-list{
+        grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+        gap: 18px;
+        row-gap: 30px;
+    }
+}
