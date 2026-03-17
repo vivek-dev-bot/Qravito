@@ -1,51 +1,177 @@
+/* ===== FOOD DISPLAY GRID ===== */
+
 .food-display{
-    margin-top: 40px;
+    margin-top: 60px;
     padding: 0 20px;
-    animation: fadeIn 0.8s ease-in-out;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .food-display h2{
     font-size: clamp(24px, 2.2vw, 32px);
     font-weight: 700;
     color: #2c2c2c;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     position: relative;
 }
-
 
 .food-display h2::after{
     content: "";
     width: 60px;
     height: 4px;
     background: tomato;
-    display: block;
-    margin-top: 6px;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
     border-radius: 10px;
-    transition: width 0.3s ease;
 }
 
-.food-display h2:hover::after{
-    width: 90px;
-}
+
+/* ===== GRID ===== */
 
 .food-display-list{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-    margin-top: 35px;
+    grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
     gap: 28px;
-    row-gap: 45px;
     align-items: stretch;
 }
 
 
-.food-display-list > *{
-    animation: cardFade 0.6s ease forwards;
+/* ===== CARD ===== */
+
+.food-item{
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: all 0.35s ease;
+    animation: fadeIn 0.8s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-@keyframes cardFade{
+.food-item:hover{
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+}
+
+
+/* ===== IMAGE ===== */
+
+.food-item-img-container{
+    position: relative;
+    overflow: hidden;
+}
+
+.food-item-image{
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.food-item:hover .food-item-image{
+    transform: scale(1.08);
+}
+
+
+/* ===== ADD BUTTON ===== */
+
+.food-item-img-container .add{
+    width: 38px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    background: white;
+    padding: 6px;
+    transition: 0.25s;
+}
+
+.food-item-img-container .add:hover{
+    transform: scale(1.2) rotate(8deg);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+
+/* ===== COUNTER ===== */
+
+.food-item-counter{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 12px;
+    border-radius: 40px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+.food-item-counter img{
+    width: 30px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.food-item-counter img:hover{
+    transform: scale(1.2);
+}
+
+
+/* ===== INFO ===== */
+
+.food-item-info{
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.food-item-name-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.food-item-name-rating p{
+    font-size: 19px;
+    font-weight: 600;
+    color: #333;
+}
+
+.food-item-name-rating img{
+    width: 70px;
+}
+
+.food-item-desc{
+    color: #777;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 60px;
+}
+
+.food-item-price{
+    color: tomato;
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+
+/* ===== ANIMATION ===== */
+
+@keyframes fadeIn{
     from{
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(15px);
     }
     to{
         opacity: 1;
@@ -54,34 +180,38 @@
 }
 
 
-/* Responsive*/
-@media (max-width: 1024px){
-    .food-display{
-        margin-top: 35px;
-    }
-    .food-display-list{
-        gap: 25px;
-        row-gap: 40px;
+/* ===== RESPONSIVE ===== */
+
+@media (max-width:1024px){
+    .food-item-image{
+        height: 200px;
     }
 }
 
-@media (max-width: 768px){
-    .food-display{
-        padding: 0 15px;
+@media (max-width:768px){
+    .food-item-image{
+        height: 180px;
     }
-    .food-display-list{
-        grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
-        gap: 22px;
+
+    .food-item-price{
+        font-size: 20px;
     }
 }
 
-@media (max-width: 480px){
-    .food-display{
-        padding: 0 10px;
+@media (max-width:480px){
+    .food-item-image{
+        height: 160px;
     }
-    .food-display-list{
-        grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
-        gap: 18px;
-        row-gap: 30px;
+
+    .food-item-name-rating p{
+        font-size: 16px;
+    }
+
+    .food-item-desc{
+        font-size: 12px;
+    }
+
+    .food-item-price{
+        font-size: 18px;
     }
 }

@@ -11,7 +11,6 @@
     font-size: clamp(26px,2.4vw,34px);
 }
 
-
 .explore-menu-text{
     max-width: 60%;
     color: #7a7a7a;
@@ -19,15 +18,40 @@
     font-size: 15px;
 }
 
+.explore-menu-wrapper{
+    position: relative;
+}
+
+.explore-menu-wrapper::before,
+.explore-menu-wrapper::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.explore-menu-wrapper::before{
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+}
+
+.explore-menu-wrapper::after{
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+}
+
 .explore-menu-list{
     display: flex;
     align-items: center;
-    gap: 32px;
-    text-align: center;
-    margin: 25px 0;
+    gap: 30px;
     overflow-x: auto;
+    padding: 15px 8px;
     scroll-behavior: smooth;
-    padding: 10px 0;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .explore-menu-list::-webkit-scrollbar{
@@ -38,62 +62,55 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 90px;
-    transition: transform 0.25s ease;
+    min-width: 95px;
+    cursor: pointer;
+    scroll-snap-align: start;
+    transition: all 0.3s ease;
 }
 
 .explore-menu-list-item img{
-    width: 7.5vw;
-    min-width: 80px;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
     border-radius: 50%;
-    cursor: pointer;
+    object-fit: cover;
     transition: all 0.35s ease;
     box-shadow: 0 6px 15px rgba(0,0,0,0.08);
-    box-sizing: border-box;
 }
 
 .explore-menu-list-item:hover img{
-    transform: scale(1.12);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+    transform: translateY(-6px) scale(1.12);
+    box-shadow: 0 16px 30px rgba(0,0,0,0.18);
 }
-
 
 .explore-menu-list-item p{
-    margin-top: 12px;
+    margin-top: 10px;
     color: #747474;
-    font-size: clamp(14px,1.4vw,17px);
-    cursor: pointer;
+    font-size: 15px;
     font-weight: 500;
-    transition: color 0.25s ease;
+    transition: 0.25s;
 }
-
 
 .explore-menu-list-item:hover p{
     color: tomato;
 }
 
-
 .explore-menu-list-item img.active{
     outline: 4px solid tomato;
-    outline-offset: 3px;
+    outline-offset: 4px;
     transform: scale(1.05);
 }
-
 
 .explore-menu hr{
     margin: 25px 0;
     height: 2px;
-    background: linear-gradient(to right, transparent, #ddd, transparent);
     border: none;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
 }
 
 @media(max-width:1050px){
     .explore-menu-text{
         max-width: 100%;
-        font-size: 14px;
-    }
-    .explore-menu-list{
-        gap: 26px;
     }
 }
 
@@ -102,9 +119,10 @@
         gap: 22px;
     }
     .explore-menu-list-item img{
-        min-width: 70px;
+        width: 75px;
+        height: 75px;
+        min-width: 75px;
     }
-
 }
 
 @media(max-width:480px){
@@ -112,6 +130,8 @@
         gap: 18px;
     }
     .explore-menu-list-item img{
-        min-width: 60px;
+        width: 65px;
+        height: 65px;
+        min-width: 65px;
     }
 }
