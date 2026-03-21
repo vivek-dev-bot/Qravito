@@ -3,7 +3,7 @@ import './Home.css'
 import Header from '../../components/Header/Header'
 import ExpolerMenu from '../../components/ExpolerMenu/ExpolerMenu'
 import FoodDisplay from '../../components/FoodDisplay/FoodDisplay'
-import AppDownload from '../../components/AppDownload/AppDownload.JSX'
+import AppDownload from '../../components/AppDownload/AppDownload'
 
 const Home = () => {
 
